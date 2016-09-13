@@ -1,0 +1,33 @@
+table, th, td {
+	border: 2px solid #7F8C8D;
+	padding: 10px; 
+}
+/*makes the table padding*/
+
+table {
+	width: 70%;
+}
+
+th {
+	height: 50px;
+	background-color: #5DADE2;
+}
+
+/*td {
+	background-color: #AED6F1;
+}*/
+
+/*affects every odd row*/
+tr:nth-child(even) {
+	background-color: #FDFEFE;
+}
+
+/*affects every even row*/
+tr:nth-child(odd) {
+	background-color: #AED6F1;
+}
+
+/*class = ., id = # */
+.row{ 
+	font-weight: bold;
+}
