@@ -14,7 +14,7 @@
 	<form action="csv.cfm" method="post">
 	<!--- include form elements - subject, email, message --->
 		hproductID (1-23):<br>
-		<input type="text" name="subject" value=""><br>
+		<input type="text" name="ID" value=""><br>
 		Email (to send csv file to):<br>
 		<input type="text" name="email" value=""><br><br>
 		<input type="submit" value="submit"><br>
