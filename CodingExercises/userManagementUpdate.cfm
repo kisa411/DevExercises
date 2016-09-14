@@ -8,12 +8,13 @@
 		SET linkedin_page='#form.URL#', 
 			tshirt='#form.shirtSize#', 
 			website_bio='#form.profile#', 
-			leaddress='#form.address#'
-		WHERE adminname='#form.name#';
-		
-<!--- 		SELECT linkedin_page, tshirt, website_bio, leaddress
+			leaddress='#form.address#';
+		WHERE lower(adminname)='#LCase(form.name)#';
+
+			
+		SELECT linkedin_page, tshirt, website_bio, leaddress
 		FROM go.dbo.leuseradmin_TEST
-		WHERE adminname='#form.name#'; --->
+		WHERE lower(adminname)='#LCase(form.name)#';
 	</cfquery>
 		<cfif '#form.name#' IS NOT "">
 			<cfoutput> Database updated for #form.name# </cfoutput>
@@ -23,5 +24,6 @@
 		
 	<cfcatch>
 		<cfoutput> #form.name# - Database wasn't able to be updated. Please check your input! </cfoutput>
+		<cfdump var='#userinfo#'/>
 	</cfcatch>
 </cftry>
