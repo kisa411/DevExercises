@@ -1,6 +1,6 @@
 <cftry>
 	<!--- query SQL for data --->
-	<cfquery>
+	<cfquery datasource="callmeasurement" name="hproduct">
 		SELECT product_name, l.refname, l.lskinid 
 		FROM hproduct h
 		INNER JOIN hproduct_lskin hl
@@ -9,7 +9,14 @@
 		ON hl.frn_lskinid=l.lskinid;
 	</cfquery>
 	
-	<!--- create .csv file --->
+	<!--- create default .xls file --->
+	<cfspreadsheet action="write" filename="hproduct.xls" query="hproduct" overwrite="true">
+	<!--- convert .xls file to .csv using cffile --->
+	
+	
+	
+	
+
 	
 	<!--- send email --->
 	<cfmail to="#form.email#"
@@ -17,7 +24,7 @@
 		subject="hproduct Data"
 		type="text"
 	>
-		<cfmailparam file="pika1.jpg"> <!--- attaches file to email body --->
+		<cfmailparam file="hproduct.csv"> <!--- attaches file to email body --->
 		
 		Attached is the .csv file with the hproduct information!
 
@@ -26,6 +33,7 @@
 	<cfoutput> hproductID: "#form.ID#", email: "#form.email#" </cfoutput>
 	
 	<cfcatch>
-		<cfoutput> The SQL query couldn't be called. Check your inputs and try again! </cfoutput>
+		<cfdump var = "#cfcatch#" />
+		<cfoutput> The SQL query couldn't be called (or something went wrong iono). Check your inputs and try again! </cfoutput>
 	</cfcatch>
 </cftry>
