@@ -1,8 +1,13 @@
 <cftry>
 	<!--- query SQL for data --->
-<!--- 	<cfquery>
-		
-	</cfquery> --->
+	<cfquery>
+		SELECT product_name, l.refname, l.lskinid 
+		FROM hproduct h
+		INNER JOIN hproduct_lskin hl
+		ON h.hproductid=hl.frn_hproductid
+		INNER JOIN lskin l
+		ON hl.frn_lskinid=l.lskinid;
+	</cfquery>
 	
 	<!--- create .csv file --->
 	
