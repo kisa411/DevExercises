@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title> 10 Funny and Interesting Facts</title>
-	<h2> 10 Funny and Interesting Facts</h2>
+	<h1> 10 Funny and Interesting Facts</h1>
 	<!--- add CSS stylesheet --->
 	<link rel="stylesheet" type="text/css" href="reactiveContent.css">
 	<!--- add javascript & jQuery --->
