@@ -1,0 +1,13 @@
+input, textarea {
+	padding: 5px;
+	border: solid 1px #5D6D7E;
+	font-family: sans-serif;
+	width: 500px;
+}
+
+form {
+	border: solid 3px #5D6D7E;
+	padding: 10px;
+	border-width: 30px;
+	width: 515px;
+}

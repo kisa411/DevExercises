@@ -10,6 +10,7 @@ form that asks for user's:
  <html>
  <head>
 	<title>User Management Tool</title>
+	<link rel="stylesheet" href="userManagementUpdate.css">
  </head>
  
  <body>

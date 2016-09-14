@@ -11,13 +11,17 @@
 			leaddress='#form.address#'
 		WHERE adminname='#form.name#';
 		
-		SELECT TOP 5 linkedin_page, tshirt, website_bio, leaddress
+<!--- 		SELECT linkedin_page, tshirt, website_bio, leaddress
 		FROM go.dbo.leuseradmin_TEST
-		WHERE adminname='#form.name#';
-
+		WHERE adminname='#form.name#'; --->
 	</cfquery>
-	<cfdump var='#userinfo#'>
+		<cfif '#form.name#' IS NOT "">
+			<cfoutput> Database updated for #form.name# </cfoutput>
+		<cfelse>
+			<cfoutput> Did you put in a name? Please check your inputs!</cfoutput>
+		</cfif>
+		
 	<cfcatch>
-		<cfoutput> #form.name# </cfoutput>
+		<cfoutput> #form.name# - Database wasn't able to be updated. Please check your input! </cfoutput>
 	</cfcatch>
 </cftry>
