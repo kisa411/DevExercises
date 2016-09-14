@@ -3,7 +3,44 @@
 	font-size: 24px;
 }
 
-.odd {
+.odd { 
 	color: #85929E;
 	font-size: 24px;
 }
+
+#heart {
+	color: red;
+}
+
+#horses {
+	color: #EDBB99 ;
+}
+
+#rib {
+	color: #D68910;
+}
+
+#vessel {
+	color: #5DADE2;
+}
+
+#tongue{
+	color: #FADBD8;
+}
+
+#duck {
+	color: #F4D03F;
+}
+
+#water {
+	color: #3498DB;
+}
+
+#digest {
+	color: #A2D9CE;
+}
+
+#squirrel {
+	color: #C39BD3;
+}
+
