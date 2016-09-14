@@ -13,10 +13,10 @@ form that asks for user's:
  </head>
  
  <body>
-	<form>	
+	<form action="userManagement.cfm" method="post">	
 	<!--- User's first name --->
-	First name:<br>
-	<input type="text" name="firstname"><br>
+	Name:<br>
+	<input type="text" name="name"><br>
 	<!--- User's Address --->
 	Address:<br>
 	<input type="text" name="address"><br>
@@ -34,7 +34,7 @@ form that asks for user's:
 	<!--- User's LinkedIn link --->
 	Linkedin link:<br>
 	<input type="text" name="URL"><br><br>
-	<input type="submit" name="submit"><br>
+	<input type="submit" value="submit"><br>
 	</form>
  </body>
  
