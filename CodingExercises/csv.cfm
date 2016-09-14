@@ -9,15 +9,20 @@
 		ON hl.frn_lskinid=l.lskinid;
 	</cfquery>
 	
-	<!--- create default .xls file --->
-	<cfspreadsheet action="write" filename="hproduct.xls" query="hproduct" overwrite="true">
-	<!--- convert .xls file to .csv using cffile --->
-	
-	
-	
-	
+	<!--- <!--- create default .xls file --->
+	<cfspreadsheet action="write" filename="hproduct.xls" query="hproduct" overwrite="true">--->
+<!--- 	<cfset acfile = "hproduct.csv"> --->
+<!--- 	<cfset TempFile = "">
 
-	
+
+	<cfif FileExists(TempFile)>
+		<cffile action="delete" file="#TempFile#" >
+	</cfif> --->
+
+	<cfset fastFileWriter = createObject("java", "FastResultsetToFile")>
+	<!--- <cfset fastFileWriter.exportResultsetToFile(hproduct, "#TempFile#", ',', "UTF-8")> --->
+	<cfset fastFileWriter.exportResultsetToFile(hproduct, "hproduct.csv", ',', "UTF-8")>	
+
 	<!--- send email --->
 	<cfmail to="#form.email#"
 		from="no-reply@callmeasurement.com"
