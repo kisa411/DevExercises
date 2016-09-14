@@ -11,15 +11,22 @@ Summary of requirements:
 <html>
 <head> 
 	<h2 id="title">Coding Exercise #3 - Styling Manuscript</h2>
+	<!--- add jQuery --->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<!--- add CSS file --->
 	<link rel="stylesheet" href="styleManuscript.css">
-
-
-	<button id="incFont" type="button">Increase font size</button>
-	<button id="decFont" type="button">Decrease font size</button>
-	<button id="backColor" type="button">Change background color</button>
-	<button id="textColor" type="button">Change text color</button>
-	<button id="titleSize" type="button">Increase title size</button>
+	
+	<div class="hide">
+		<button id="incFont" type="button">Increase font size</button>
+		<button id="decFont" type="button">Decrease font size</button>
+		<button id="backColor" type="button">Change background color</button>
+		<button id="textColor" type="button">Change text color</button>
+		<button id="titleSize" type="button">Increase title size</button>
+		<button id="hidden" type="button">Hide buttons</button>
+	</div>
+	<button id="show" type="button">Show buttons</button>
+	
+ 
 </head>
 
 <body id="information">

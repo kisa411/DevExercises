@@ -20,3 +20,19 @@ figcaption {
 body {
 	background-color: white;
 }
+
+button {
+	background-color: #7F8C8D;
+	color: #AED6F1;
+	border: none;
+	padding: 8px 10px;
+	text-align: center;
+	display: inline-block;
+	border-radius: 8px;
+	float: center;
+}
+
+button:hover{
+	background-color: #F5B7B1;
+	color: white;
+}
