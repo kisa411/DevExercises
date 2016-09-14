@@ -8,7 +8,7 @@
 		SET linkedin_page='#form.URL#', 
 			tshirt='#form.shirtSize#', 
 			website_bio='#form.profile#', 
-			leaddress='#form.address#';
+			leaddress='#form.address#'
 		WHERE lower(adminname)='#LCase(form.name)#';
 
 			
@@ -24,6 +24,7 @@
 		
 	<cfcatch>
 		<cfoutput> #form.name# - Database wasn't able to be updated. Please check your input! </cfoutput>
-		<cfdump var='#userinfo#'/>
+		<cfoutput> #LCase(form.name)# </cfoutput>
+		<cfdump var='#userinfo#'> 
 	</cfcatch>
 </cftry>
