@@ -1,30 +1,39 @@
 $( document ).ready(function() {
 	console.log("ready!");
 	$("#heart").hover(function(){
-        
+        $("#heartBlurb").toggle();
+		console.log("showing");
     });
 	$("#horses").hover(function(){
-        
+        $("#horsesBlurb").toggle();
+		console.log("showing");
     });
 	$("#rib").hover(function(){
-        
+        $("#ribBlurb").toggle();
+		console.log("showing");
     });
 	$("#vessel").hover(function(){
-        
+        $("#vesselBlurb").toggle();
+		console.log("showing");
     });
 	$("#tongue").hover(function(){
-        
+        $("#tongueBlurb").toggle();
+		console.log("showing");
     });
 	$("#duck").hover(function(){
-        
+        $("#duckBlurb").toggle();
+		console.log("showing");
     });
 	$("#water").hover(function(){
-        
+        $("#waterBlurb").toggle();
+		console.log("showing");
     });
 	$("#digest").hover(function(){
-        
+        $("#digestBlurb").toggle();
+		console.log("showing");
     });
 	$("#squirrel").hover(function(){
-        
+        $("#squirrelBlurb").toggle();
+		console.log("showing");
     });
 });
