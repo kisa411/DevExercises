@@ -2,7 +2,7 @@
 	<!--- query SQL for data --->
 	<cfquery datasource="callmeasurement" name="account">
 		SELECT TOP 10 *
-		FROM archive.dbo.xcall_2016;
+		FROM archive.dbo.xcall_2016_hcat;
 
 		
 	</cfquery>
