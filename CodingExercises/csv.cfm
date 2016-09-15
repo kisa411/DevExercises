@@ -6,7 +6,8 @@
 		INNER JOIN hproduct_lskin hl
 		ON h.hproductid=hl.frn_hproductid
 		INNER JOIN lskin l
-		ON hl.frn_lskinid=l.lskinid;
+		ON hl.frn_lskinid=l.lskinid
+		WHERE h.hproductid='#form.ID#';
 	</cfquery>
 	
 	<!--- <!--- create default .xls file --->
