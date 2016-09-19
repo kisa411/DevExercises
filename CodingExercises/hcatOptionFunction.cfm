@@ -13,7 +13,6 @@
 		<input type="submit" value="submit"><br>
 	</form>
 	
-	<cfinvoke component="hcatOptionFunction.cfc" method="returnContingencies" hcatOption="#form.hcatOption#"></cfinvoke>
 	
 </body>
 </html>

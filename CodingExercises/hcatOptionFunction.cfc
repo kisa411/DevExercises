@@ -10,12 +10,17 @@
 			WHERE c.contingent_frn_hcat_optionid=#hcatOption#;
 		</cfquery>
 		<cfset contingency_list = ValueList(contingency.frn_hcatid)> <!--- put query results into a list --->
-	</cffunction>
-	
-		List of Hcat Option Contingencies:<br>
-		<cfloop index = "ListElement" list = "#contingency_list#">  
-			<cfoutput>#ListElement#</cfoutput><br>  
-		</cfloop>
+		
+		<cfset contingency_list = ValueList(contingency.frn_hcatid)>
+		<cfif ListLen(contingency_list) IS 0>
+			<cfoutput> The list was empty. </cfoutput>
+			<cfelse>
+				List of Hcat Option Contingencies: <br>
+				<cfloop index = "ListElement" list = "#contingency_list#">  
+					<cfoutput>#ListElement#</cfoutput><br>  
+				</cfloop>
+		</cfif>
 		
 		Query Successful: <br> <cfdump var='#contingency#'/>
+		</cffunction>
 </cfcomponent>
