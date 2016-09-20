@@ -4,7 +4,7 @@
 	<cffunction name="populateContingencies" access="remote">
 		<cfargument name="hcatOption" type="integer" required="true">
 		
-		<cfset contingency_list =""> <!--- create an empty list ---> 
+		<cfset contingency_list ="List: "> <!--- create an empty list ---> 
 		
 		<cfquery datasource="callmeasurement" name="contingency">
 			SELECT distinct(hcat_optionid), contingent_frn_hcat_optionid
@@ -15,9 +15,11 @@
 		</cfquery>
 		
 		<cfif len(contingency.contingent_frn_hcat_optionid)>
-			<cfreturn contingency_list.ListAppend(contingency_list, ValueList(contingency.hcat_optionid))>
+			<cfset contingency_list=ListAppend(contingency_list, ValueList(contingency.hcat_optionid))>
+			<cfreturn contingency_list>
 		<cfelse> 
-			<cfreturn contingency_list.ListAppend(contingency_list, returnContingencies(contingency.contingent_frn_hcat_optionid))>
+			<cfset contingency_list=ListAppend(contingency_list, returnContingencies(contingency.contingent_frn_hcat_optionid))>
+			<cfreturn contingency_list>
 		</cfif>
 		
 		<!--- <cfset contingency_list=ListAppend(contingency_list, ValueList(contingency.hcat_optionid))> <!--- put query results into a list --->
