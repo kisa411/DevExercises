@@ -1,10 +1,11 @@
 <cfcomponent>
 
 	<!--- function to populate list of possible options --->
-	<cffunction name="populateContingencies" access="remote">
+	<cffunction name="populateContingencies" access="public">
+		<cfargument name="contingency_list" type="string" required="true">
 		<cfargument name="hcatOption" type="integer" required="true">
 		
-		<cfset contingency_list ="List: "> <!--- create an empty list ---> 
+		<cfset temp_list="">
 		
 		<cfquery datasource="callmeasurement" name="contingency">
 			SELECT distinct(hcat_optionid), contingent_frn_hcat_optionid
@@ -14,21 +15,23 @@
 			WHERE (limit_frn_lskinid IS NULL) AND (hco_override=0) AND (c.frn_hcatid=<cfqueryparam value="#hcatOption#" cfsqltype="cf_sql_integer">) AND (handledby_frn_phonecodeid IS NULL)
 		</cfquery>
 		
-		<cfif len(contingency.contingent_frn_hcat_optionid)>
-			<cfset contingency_list=ListAppend(contingency_list, ValueList(contingency.hcat_optionid))>
-			<cfreturn contingency_list>
-		<cfelse> 
-			<cfset contingency_list=ListAppend(contingency_list, returnContingencies(contingency.contingent_frn_hcat_optionid))>
-			<cfreturn contingency_list>
-		</cfif>
+		<cfset temp_list=ValueList(contingency.hcat_optionid)>
+		<cfset contingency_list.ListAppend(contingency_list, temp_list)> <!--- append temp_list to overall list --->
 		
-		<!--- <cfset contingency_list=ListAppend(contingency_list, ValueList(contingency.hcat_optionid))> <!--- put query results into a list --->
-				 --->
+		<cfif contingency.RecordCount gt 0>
+			<cfloop query="contingency">
+				<cfset populateContingencies(temp_list, contingency.hcat_optionid)>
+			</cfloop>
+		</cfif>
+		<cfreturn contingency_list>
 	</cffunction>
 		
+
+	
 	
 	<!--- function to print out the list of possible options --->
-	<cffunction name="printContingencies" access="remote">
+	<cffunction name="printContingencies" access="public">
+		<cfargument name="contingency_list" type="string" required="true">
 		<cfif ListLen(contingency_list) IS 0>
 			<cfoutput> The list was empty. </cfoutput>
 			<cfelse>
@@ -38,6 +41,5 @@
 				</cfloop>
 		</cfif>
 		
-		Query Successful: <br> <cfdump var='#contingency#'/>
 	</cffunction>
 </cfcomponent>
