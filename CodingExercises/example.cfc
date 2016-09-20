@@ -18,7 +18,6 @@
       AND hco.hco_active = 1
       ORDER BY frn_hcatid
     </cfquery>
-	
     <cfset queryArray = ArrayNew(1)>
     <cfif HcatContingencies.RecordCount gt 0>
       <cfset isAppended = ArrayAppend(queryArray, HcatContingencies)>
