@@ -4,11 +4,11 @@
 	<cffunction name="populateContingencies" access="remote">
 		<cfargument name="hcatOption" type="numeric" required="true">
 		<cfquery datasource="callmeasurement" name="contingency">
-			SELECT distinct(c.frn_hcatid)
+			SELECT distinct(hcat_optionid)
 			FROM hcat_option o
 			JOIN hcat_contingency c
 			ON o.frn_hcatid = c.frn_hcatid
-			WHERE c.contingent_frn_hcat_optionid=<cfqueryparam value="#hcatOption#" cfsqltype="cf_sql_integer">
+			WHERE (limit_frn_lskinid IS NULL) AND (hco_override=0) AND (c.frn_hcatid=<cfqueryparam value="#hcatOption#" cfsqltype="cf_sql_integer">) AND (handledby_frn_phonecodeid IS NULL)
 		</cfquery>
 		<cfset contingency_list = ValueList(contingency.frn_hcatid)> <!--- put query results into a list --->
 	</cffunction>
