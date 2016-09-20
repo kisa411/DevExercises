@@ -1,7 +1,7 @@
 <cftry>
 	<!--- query SQL for data --->
 	<cfquery datasource="callmeasurement" name="account">
-		SELECT l.refname, l.lskinid AS AccountName, (DATEPART(mm,a.tz_date)) as Month, COUNT(a.leminutes) AS Minutes
+		SELECT l.refname AS AccountName, l.lskinid AS AccountID, (DATEPART(mm,a.tz_date)) as Month, SUM(a.leminutes) AS Minutes
 		FROM lskin l
 		INNER JOIN dnis d
 		ON l.lskinid=d.add_lskinid
