@@ -16,16 +16,33 @@
 				AND (handledby_frn_phonecodeid IS NULL)
 		</cfquery>
 		
-		<cfset temp_list=ValueList(contingency.hcat_optionid)> 
-		<cfset contingency_list=ListAppend(contingency_list, temp_list)> <!--- append temp_list to overall list --->
-		
+		Contingency List:<Br>
 		<cfloop index = "ListElement" list = "#contingency_list#">  
 			<cfoutput>#ListElement#</cfoutput><br>
 		</cfloop>
-		<br>  
+		
+		<cfset temp_list=ValueList(contingency.hcat_optionid)> 
+		<cfif len(temp_list) eq 0> 
+            <cfoutput>  
+                Loop terminated.
+            </cfoutput>  
+            <cfbreak> 
+		</cfif>			
+		
+		<cfset contingency_list=ListAppend(contingency_list, temp_list)> <!--- append temp_list to overall list --->
+		
+		<Br>Temp List:<br>
+		<cfloop index = "ListElement" list = "#temp_list#">  
+			<cfoutput>#ListElement#</cfoutput><br>
+		</cfloop>
+		<br>
+  
 		<cfif contingency.RecordCount gt 0>
+
 			<cfloop query="contingency">				
+				
 				<cfset temp_list = populateContingencies(contingency_list, hcat_optionid)>
+
 			</cfloop>
 		</cfif>
 		<cfreturn contingency_list>
