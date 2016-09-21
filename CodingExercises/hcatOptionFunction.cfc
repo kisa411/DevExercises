@@ -4,7 +4,7 @@
 	<cffunction name="populateContingencies" access="public">
 		<cfargument name="contingency_list" type="string" required="true">
 		<cfargument name="hcatOption" type="string" required="true">
-		<cfoutput> Added: #arguments.hcatOption# <br><br></cfoutput>
+		<!--- <cfoutput> Added: #arguments.hcatOption# <br><br></cfoutput> --->
 		<!--- <cfquery datasource="callmeasurement" name="contingency">
 			SELECT distinct(hcat_optionid), contingent_frn_hcat_optionid
 			FROM hcat_option o
@@ -32,19 +32,14 @@
 		  ORDER BY frn_hcatid
 		</cfquery>
 		
-		
+		<!--- convert query results into a list and put it in temp_list --->
 		<cfset temp_list=ValueList(contingency.hcat_optionid)> 
-		
-		
+		<!--- append temp_list contents to contingency_list --->
 		<cfset arguments.contingency_list=ListAppend(arguments.contingency_list, temp_list)> 
-		
-		<br>
-  
-		<cfif contingency.RecordCount gt 0 AND len(hcatOption)NEQ 0>
 
+		<cfif contingency.RecordCount gt 0 AND len(hcatOption) NEQ 0>
 			<cfloop query="contingency">				
 				<cfset temp_list = populateContingencies(arguments.contingency_list, contingency.hcat_optionid)>
-
 			</cfloop>
 		</cfif>
 		
@@ -52,7 +47,6 @@
 	</cffunction>
 		
 
-	
 	
 	<!--- function to print out the list of possible options --->
 	<cffunction name="printContingencies" access="public">
