@@ -9,6 +9,12 @@
 	</style>
 </head>
 
+<cfquery datasource="#application.ds#" name="pullHproduct">
+	SELECT hproductid, 
+		product_name
+	FROM hproduct
+</cfquery>
+
 
 <body>
 	<form action="csv.cfm" method="post">
@@ -25,10 +31,15 @@
 			<th>hproductID</th>
 			<th>Product Name</th>
 		</tr>
-		<tr>
-			<td>1</td>
-			<td>Car Wars</td>
-		</tr>
+		<cfoutput>
+		<cfloop query="pullHproduct">
+			<tr>
+				<td>#hproductid#</td>
+				<td>#product_name#</td>
+			</tr>
+		</cfloop>
+		</cfoutput>
+		<!--- 
 		<tr>
 			<td>2</td>
 			<td>Patient Pursuit</td>
@@ -116,7 +127,7 @@
 		<tr>
 			<td>23</td>
 			<td>Medical Call Measurement</td>
-		</tr>	
+		</tr>--->
 	</table>
 	
 
